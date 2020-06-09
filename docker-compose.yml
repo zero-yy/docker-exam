@@ -1,0 +1,19 @@
+version: "3"
+services:
+  web:
+    # 用你的用户名和镜像细节替换username/repo:tag命令
+    image: hello
+    deploy:
+      replicas: 2
+      resources:
+        limits:
+          cpus: "0.1"
+          memory: 100M
+      restart_policy:
+        condition: on-failure
+    ports:
+      - "80:80"
+    networks:
+      - webnet
+networks:
+  webnet:
